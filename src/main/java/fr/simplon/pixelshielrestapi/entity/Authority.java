@@ -10,16 +10,21 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="authorities")
-public class Authorities {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Authority {
 
     private String authority;
 
     @ManyToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "users")
     private User user;
+    @Id
+    private Long id;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

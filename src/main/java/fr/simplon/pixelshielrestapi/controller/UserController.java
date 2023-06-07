@@ -1,2 +1,4 @@
-package fr.simplon.pixelshielrestapi.controller;public class UserController {
+package fr.simplon.pixelshielrestapi.controller;
+
+public class UserController {
 }
