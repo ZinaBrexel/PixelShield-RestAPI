@@ -45,6 +45,7 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.GET,   "/sondages" , "/sinistres", "/sinistre" ).hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/materiel", "/mes_sinistres" ).hasRole("USER")
                 .requestMatchers(HttpMethod.POST, "/createManager" ).hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/createSurvey").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/password", "/createUser").permitAll()
                 .requestMatchers(HttpMethod.GET,"/**").permitAll()
                 .and().formLogin()

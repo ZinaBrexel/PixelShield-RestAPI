@@ -22,11 +22,7 @@ public class ApiController {
 
         return ("/login");
     }
-    @GetMapping("/sondages")
-    public String survey() {
 
-        return ("survey");
-    }
     @GetMapping("/password")
     public String password() {
         return ("updatePassword");
