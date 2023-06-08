@@ -1,6 +1,7 @@
 package fr.simplon.pixelshielrestapi.security;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,10 +17,10 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
-public class SpringSecurityConfig {
 
-    private final  javax.sql.DataSource dataSource;
+public class SpringSecurityConfig {
+@Autowired
+    private javax.sql.DataSource dataSource;
 
     @Bean
     public UserDetailsManager users(DataSource dataSource)
@@ -31,6 +32,7 @@ public class SpringSecurityConfig {
     {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
     {
@@ -42,10 +44,11 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.GET,  "/employe_details","/employe_edit", "/employees").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET,   "/sondages" , "/sinistres", "/sinistre" ).hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/materiel", "/mes_sinistres" ).hasRole("USER")
-                .requestMatchers(HttpMethod.GET, "/", "/about", "/login", "/faq", "/nosvaleurs","/nostarifs", "/souscription", "/contact", "/mentionslegales").permitAll()
-                .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/password").permitAll()
+                .requestMatchers(HttpMethod.POST, "/createManager" ).hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/password", "/createUser").permitAll()
                 .requestMatchers(HttpMethod.GET,"/**").permitAll()
                 .and().formLogin()
+                .loginPage("/login") // Ici on spécifie la page de login
                 .and().build();
     }
 

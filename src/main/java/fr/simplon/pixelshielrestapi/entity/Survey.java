@@ -51,6 +51,7 @@ public class Survey {
     @NotNull(message = "La date de création ne peut pas être nulle.")
     @Column(updatable = false)
     private LocalDate creation_date = LocalDate.now();
+    private String formattedCreationDate;
 
 
     /**
@@ -59,6 +60,8 @@ public class Survey {
     @NotNull(message = "La date de clôture ne peut pas être nulle.")
     @FutureOrPresent(message = "La date de clôture doit être ultérieure à la date de création.")
     private LocalDate close_date;
+    private String formattedCloseDate;
+
 
     /**
      * Nom du créateur du sondage.

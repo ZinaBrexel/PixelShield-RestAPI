@@ -1,13 +1,17 @@
 package fr.simplon.pixelshielrestapi.controller;
 
+import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
 
 public class ApiController {
+
+    private final SurveyRepository surveyRepository;
 
     @GetMapping("/")
     public String home() {
@@ -18,14 +22,10 @@ public class ApiController {
 
         return ("/login");
     }
-    @PostMapping()
     @GetMapping("/sondages")
     public String survey() {
+
         return ("survey");
-    }
-    @GetMapping("/souscription")
-    public String subscribe() {
-        return ("subscribe");
     }
     @GetMapping("/password")
     public String password() {
@@ -62,10 +62,6 @@ public class ApiController {
     @GetMapping("/clients")
     public String customersAdmin() {
         return ("customers");
-    }
-    @GetMapping("/employes")
-    public String employeesAdmin() {
-        return ("employees");
     }
     @GetMapping("/employe_details")
     public String employeDetailsAdmin() {
