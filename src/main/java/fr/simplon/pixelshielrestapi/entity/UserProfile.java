@@ -9,6 +9,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
+
 @Getter
 @Setter
 @Entity
@@ -29,6 +33,8 @@ public class UserProfile {
     private String phone;
 
     private String formula;
+
+    private LocalDate createdAt = LocalDate.now();
 
 }
 

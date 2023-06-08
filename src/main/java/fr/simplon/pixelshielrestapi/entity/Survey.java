@@ -66,5 +66,6 @@ public class Survey {
     /**
      * Nom du créateur du sondage.
      */
-    private String employee;
+    @NotNull
+    private String username;
 }

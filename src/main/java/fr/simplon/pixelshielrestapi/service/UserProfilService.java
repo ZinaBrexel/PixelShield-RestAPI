@@ -1,11 +1,9 @@
 package fr.simplon.pixelshielrestapi.service;
 
-import fr.simplon.pixelshielrestapi.entity.Survey;
 import fr.simplon.pixelshielrestapi.entity.UserProfile;
 import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Optional;
 

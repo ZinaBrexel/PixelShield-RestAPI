@@ -55,10 +55,6 @@ public class ApiController {
     public String accidentProfile() {
         return ("accidentProfile");
     }
-    @GetMapping("/dashboard")
-    public String dashboardAdmin() {
-        return ("dashboard");
-    }
     @GetMapping("/clients")
     public String customersAdmin() {
         return ("customers");

@@ -2,7 +2,6 @@ package fr.simplon.pixelshielrestapi.controller;
 
 import fr.simplon.pixelshielrestapi.dto.UserForm;
 import fr.simplon.pixelshielrestapi.entity.UserProfile;
-import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import fr.simplon.pixelshielrestapi.service.UserProfilService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
