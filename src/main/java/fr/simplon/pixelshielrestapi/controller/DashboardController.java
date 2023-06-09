@@ -6,16 +6,15 @@ import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
 import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import fr.simplon.pixelshielrestapi.service.SurveyService;
 import fr.simplon.pixelshielrestapi.service.UserProfilService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -46,5 +45,28 @@ public class DashboardController {
         model.addAttribute("surveys", unpublishedSurveys);
         return ("dashboard");
     }
+    @PostMapping("/dashboard/moderation/{id}")
+    public String publishSurvey(@PathVariable Long id, @RequestParam Boolean published){
+        // Récupérer le sondage par id
+        Optional<Survey> optionalSurvey = surveyService.getSurveyById(id);
+
+        if(optionalSurvey.isPresent()) {
+            // Si le sondage existe, le marquer comme publié ou le supprimer, selon la valeur de "published"
+            Survey surveyToPublish = optionalSurvey.get();
+            if(published){
+                surveyToPublish.setPublished(true);
+                // Enregistrer le sondage mis à jour
+                surveyService.updateSurvey(surveyToPublish);
+            } else {
+                surveyService.deleteSurvey(id);
+            }
+        } else {
+            // handle the case when the survey with the provided id does not exist
+            return "redirect:/dashboard";
+        }
+
+        return "redirect:/dashboard";
+    }
+
 
 }

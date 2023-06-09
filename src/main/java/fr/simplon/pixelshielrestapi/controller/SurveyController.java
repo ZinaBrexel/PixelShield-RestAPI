@@ -21,7 +21,7 @@ public class SurveyController {
 
     @GetMapping("/sondages")
     public String survey(Model model, @RequestParam(defaultValue = "0") int page) {
-        Page<Survey> surveys = surveyService.getAllSurveys(PageRequest.of(page, 10));
+        Page<Survey> surveys = surveyService.getAllSurveysPublishedTrue(PageRequest.of(page, 10));
         model.addAttribute("surveys", surveys);
 
         return ("survey");

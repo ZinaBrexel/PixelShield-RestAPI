@@ -1,5 +1,6 @@
 package fr.simplon.pixelshielrestapi.security;
 
+import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -41,10 +42,10 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET,"/profil", "/password").authenticated()
                 .requestMatchers("/dashboard", "/clients", "/client_details", "/client_edit", "/profil_client").hasAnyRole("ADMIN", "MANAGER")
-                .requestMatchers(HttpMethod.GET,  "/employe_details","/employe_edit", "/employees", "/dashboard").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,  "/employe_details","/employe_edit", "/employees", "/dashboard", "/dashboard/moderation/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET,   "/sondages" , "/sinistres", "/sinistre" ).hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/materiel", "/mes_sinistres" ).hasRole("USER")
-                .requestMatchers(HttpMethod.POST, "/createManager" ).hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/createManager", "/dashboard/moderation/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/createSurvey").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/password", "/createUser").permitAll()
                 .requestMatchers(HttpMethod.GET,"/**").permitAll()

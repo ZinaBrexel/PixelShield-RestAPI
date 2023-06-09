@@ -221,21 +221,21 @@
                 </tr>
                 </thead>
                 <tbody>
-        <tr th:each="unPublished : ${surveys}" class="text-white">
 
+                     <tr  class="text-white" th:each="unPublished : ${surveys}">
+<form th:action="@{/dashboard/moderation/{id}(id=${unPublished.id})}" method="post">
                     <td th:text="${unPublished.id}" name="id">001</td>
                     <td th:text="${unPublished.creation_date}" name="creation_date">Retraite</td>
                     <td th:text="${unPublished.description}" name="description">Êtes-vous pour un accord pour une retraite à 60 ans?</td>
                     <td th:text="${unPublished.question}" name="question"></td>
                     <td>
-                        <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
-                            PUBLIER
-                        </a>
-                        <a class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" href="#" role="button">
-                            REFUSER
-                        </a>
-                    </td>
-                </tr>
+        <button class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" name="published" value="true" type="submit">PUBLIER</button>
+        <button class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" name="published" value="false" type="submit">REFUSER</button>
+    </td>
+                </form>
+                     </tr>
+
+
                 </tbody>
             </table>
         </div>

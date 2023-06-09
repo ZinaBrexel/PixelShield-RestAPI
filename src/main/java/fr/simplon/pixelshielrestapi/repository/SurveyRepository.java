@@ -11,4 +11,6 @@ import java.util.Collection;
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
     Page<Survey> findAll(Pageable pageable);
     Collection<Survey>findByPublishedFalse();
+    Page<Survey> findByPublishedTrue(Pageable pageable);
+
 }

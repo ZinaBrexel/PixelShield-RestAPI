@@ -2,20 +2,26 @@ package fr.simplon.pixelshielrestapi.service;
 
 import fr.simplon.pixelshielrestapi.entity.Survey;
 import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
+import jakarta.persistence.EntityManager;
 
-import java.util.Collection;
 import java.util.Optional;
-
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class SurveyService {
     private final SurveyRepository surveyRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public void addSurvey(Survey survey){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -26,15 +32,20 @@ public class SurveyService {
     public Page<Survey> getAllSurveys(Pageable pageable){
         return surveyRepository.findAll(pageable);
     }
-
+    public Page<Survey> getAllSurveysPublishedTrue(Pageable pageable){
+        return surveyRepository.findByPublishedTrue(pageable);
+    }
     public Optional<Survey> getSurveyById(Long id){
         return surveyRepository.findById(id);
     }
-    public void updateSurvey(Survey survey){
-        surveyRepository.save(survey);
+
+
+    public Survey updateSurvey(Survey survey){
+        return entityManager.merge(survey);
+
     }
     public void deleteSurvey(Long id){
-            surveyRepository.deleteById(id);
+        surveyRepository.deleteById(id);
     }
 
 }
