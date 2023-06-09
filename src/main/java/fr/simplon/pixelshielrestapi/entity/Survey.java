@@ -1,5 +1,6 @@
 package fr.simplon.pixelshielrestapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
@@ -9,8 +10,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Entité représentant un sondage.
@@ -50,14 +55,14 @@ public class Survey {
      */
     @NotNull(message = "La date de création ne peut pas être nulle.")
     @Column(updatable = false)
-    private LocalDate creation_date = LocalDate.now();
+    private LocalDateTime creation_date = LocalDateTime.now();
 
     /**
      * Date de clôture du sondage.
      */
     @NotNull(message = "La date de clôture ne peut pas être nulle.")
     @FutureOrPresent(message = "La date de clôture doit être ultérieure à la date de création.")
-    private LocalDate close_date;
+    private LocalDateTime close_date;
 
     /**
      * Nom du créateur du sondage.
@@ -67,4 +72,24 @@ public class Survey {
 
     @NotNull
     private Boolean published = false;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "survey")
+    private Set<Vote> votes = new HashSet<>();
+
+
+    public void addVote(Vote vote) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        vote.setUsername(currentUserName);
+        votes.add(vote);
+        vote.setSurvey(this);
+    }
+    public boolean isOpen() {
+        return LocalDateTime.now().isBefore(this.close_date);
+    }
+    public boolean isClosed() {
+        return LocalDateTime.now().isAfter(this.close_date);
+    }
+
 }

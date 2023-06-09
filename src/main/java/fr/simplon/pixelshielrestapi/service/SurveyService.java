@@ -2,6 +2,7 @@ package fr.simplon.pixelshielrestapi.service;
 
 import fr.simplon.pixelshielrestapi.entity.Survey;
 import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
+import fr.simplon.pixelshielrestapi.repository.VoteRepository;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SurveyService {
     private final SurveyRepository surveyRepository;
+
+    private final VoteRepository voteRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -46,6 +49,10 @@ public class SurveyService {
     }
     public void deleteSurvey(Long id){
         surveyRepository.deleteById(id);
+    }
+
+    public boolean hasUserVotedForSurvey(String username, Long surveyId) {
+        return voteRepository.existsByUsernameAndSurveyId(username, surveyId);
     }
 
 }

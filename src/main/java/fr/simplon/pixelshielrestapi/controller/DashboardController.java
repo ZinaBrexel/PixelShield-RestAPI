@@ -6,25 +6,18 @@ import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
 import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import fr.simplon.pixelshielrestapi.service.SurveyService;
 import fr.simplon.pixelshielrestapi.service.UserProfilService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class DashboardController {
-    @Autowired
-    private UserDetailsManager userDetailsManager;
-    @Autowired
-    private UserProfilService userProfilService;
 
     @Autowired
     private UserProfileRepository userProfileRepository;
@@ -41,10 +34,13 @@ public class DashboardController {
         model.addAttribute("userProfiles", userProfiles);
         Collection<UserProfile> managerProfiles = userProfileRepository.findTop10ByRoleManager();
         model.addAttribute("managerProfiles", managerProfiles);
-        Collection<Survey> unpublishedSurveys = surveyRepository.findByPublishedFalse();
+        Collection<Survey> unpublishedSurveys = surveyRepository.findByPublishedFalse().stream()
+                .filter(survey -> !survey.isClosed())
+                .collect(Collectors.toList());
         model.addAttribute("surveys", unpublishedSurveys);
         return ("dashboard");
     }
+
     @PostMapping("/dashboard/moderation/{id}")
     public String publishSurvey(@PathVariable Long id, @RequestParam Boolean published){
         // Récupérer le sondage par id
