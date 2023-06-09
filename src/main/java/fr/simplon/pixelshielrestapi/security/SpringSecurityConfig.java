@@ -41,7 +41,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET,"/profil", "/password").authenticated()
                 .requestMatchers("/dashboard", "/clients", "/client_details", "/client_edit", "/profil_client").hasAnyRole("ADMIN", "MANAGER")
-                .requestMatchers(HttpMethod.GET,  "/employe_details","/employe_edit", "/employees").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,  "/employe_details","/employe_edit", "/employees", "/dashboard").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET,   "/sondages" , "/sinistres", "/sinistre" ).hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/materiel", "/mes_sinistres" ).hasRole("USER")
                 .requestMatchers(HttpMethod.POST, "/createManager" ).hasRole("ADMIN")

@@ -23,7 +23,6 @@ public class SurveyService {
         survey.setUsername(currentUserName);
         surveyRepository.save(survey);
     }
-
     public Page<Survey> getAllSurveys(Pageable pageable){
         return surveyRepository.findAll(pageable);
     }
@@ -31,8 +30,11 @@ public class SurveyService {
     public Optional<Survey> getSurveyById(Long id){
         return surveyRepository.findById(id);
     }
-
+    public void updateSurvey(Survey survey){
+        surveyRepository.save(survey);
+    }
     public void deleteSurvey(Long id){
             surveyRepository.deleteById(id);
     }
+
 }

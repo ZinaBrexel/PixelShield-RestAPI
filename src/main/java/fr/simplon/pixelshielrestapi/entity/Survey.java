@@ -64,4 +64,7 @@ public class Survey {
      */
     @NotNull
     private String username;
+
+    @NotNull
+    private Boolean published = false;
 }

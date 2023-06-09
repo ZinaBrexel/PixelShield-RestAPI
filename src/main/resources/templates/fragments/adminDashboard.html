@@ -214,68 +214,19 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">DATE CREATION</th>
                     <th scope="col">SUJET</th>
                     <th scope="col">QUESTION</th>
                     <th scope="col">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Retraite</td>
-                    <td>Êtes-vous pour un accord pour une retraite à 60 ans?</td>
-                    <td>
-                        <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
-                            PUBLIER
-                        </a>
-                        <a class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" href="#" role="button">
-                            REFUSER
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Retraite</td>
-                    <td>Êtes-vous pour un accord pour une retraite à 60 ans?</td>
-                    <td>
-                        <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
-                            PUBLIER
-                        </a>
-                        <a class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" href="#" role="button">
-                            REFUSER
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Retraite</td>
-                    <td>Êtes-vous pour un accord pour une retraite à 60 ans?</td>
-                    <td>
-                        <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
-                            PUBLIER
-                        </a>
-                        <a class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" href="#" role="button">
-                            REFUSER
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Retraite</td>
-                    <td>Êtes-vous pour un accord pour une retraite à 60 ans?</td>
-                    <td>
-                        <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
-                            PUBLIER
-                        </a>
-                        <a class="btn btn-warning-big nav-link px-3 mt-2 me-4 d-flex align-items-center" href="#" role="button">
-                            REFUSER
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Retraite</td>
-                    <td>Êtes-vous pour un accord pour une retraite à 60 ans?</td>
+        <tr th:each="unPublished : ${surveys}" class="text-white">
+
+                    <td th:text="${unPublished.id}" name="id">001</td>
+                    <td th:text="${unPublished.creation_date}" name="creation_date">Retraite</td>
+                    <td th:text="${unPublished.description}" name="description">Êtes-vous pour un accord pour une retraite à 60 ans?</td>
+                    <td th:text="${unPublished.question}" name="question"></td>
                     <td>
                         <a class="btn btn-success-big nav-link px-3 mb-2 me-4 d-flex align-items-center" href="#" role="button">
                             PUBLIER

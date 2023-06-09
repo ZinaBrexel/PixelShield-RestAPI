@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 
+
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
     Page<Survey> findAll(Pageable pageable);
+    Collection<Survey>findByPublishedFalse();
 }
