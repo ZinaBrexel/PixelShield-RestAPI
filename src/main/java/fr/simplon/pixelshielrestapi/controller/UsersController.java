@@ -2,12 +2,15 @@ package fr.simplon.pixelshielrestapi.controller;
 
 import fr.simplon.pixelshielrestapi.dto.UserForm;
 import fr.simplon.pixelshielrestapi.entity.UserProfile;
+import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import fr.simplon.pixelshielrestapi.service.UserProfilService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,10 +22,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
 @Controller
 public class UsersController
@@ -33,6 +38,9 @@ public class UsersController
     private UserDetailsManager userDetailsManager;
     @Autowired
     private UserProfilService userProfilService;
+
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     @Autowired
     public UsersController(
@@ -100,6 +108,14 @@ public class UsersController
         }
         return "subscribe";
     }
+    @GetMapping("/profil")
+    public String getProfile(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+        model.addAttribute("userProfile", userProfile);
+        return "profile";
+    }
+
     @PostMapping("/createUser")
     @Transactional
     public String createUser(

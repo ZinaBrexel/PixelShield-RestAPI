@@ -27,10 +27,6 @@ public class ApiController {
     public String password() {
         return ("updatePassword");
     }
-    @GetMapping("/profil")
-    public String profile() {
-        return ("profile");
-    }
     @GetMapping("/profil_edit")
     public String profileEdit() {
         return ("profileEdit");
@@ -54,14 +50,6 @@ public class ApiController {
     @GetMapping("/clients")
     public String customersAdmin() {
         return ("customers");
-    }
-    @GetMapping("/employe_details")
-    public String employeDetailsAdmin() {
-        return ("employe_details");
-    }
-    @GetMapping("/employe_edit")
-    public String employeEditAdmin() {
-        return ("edit_employe");
     }
     @GetMapping("/client_details")
     public String customerDetailsAdmin() {

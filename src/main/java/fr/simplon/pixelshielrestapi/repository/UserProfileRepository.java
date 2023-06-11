@@ -2,7 +2,9 @@ package fr.simplon.pixelshielrestapi.repository;
 
 import fr.simplon.pixelshielrestapi.entity.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -19,4 +21,6 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
             "(SELECT a.username FROM authorities a WHERE a.authority = 'ROLE_MANAGER') " +
             "ORDER BY u.created_at DESC LIMIT 10", nativeQuery = true)
     Collection<UserProfile> findTop10ByRoleManager();
+    UserProfile findByUsername(String username);
+
 }
