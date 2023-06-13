@@ -103,37 +103,21 @@ public class DashboardController {
     }
 
     @PostMapping("/edit/employe/{username}")
-    @Transactional
-    public String editEmploye(@PathVariable String username, @Valid @ModelAttribute(name = "user") UserForm user,
-                              BindingResult validation, Model model) {
-        if (validation.hasErrors()) {
-            // Gérer les erreurs de validation
-            return "redirect:/edit_employe/{username}";
-        }
+    public String editEmploye(@PathVariable String username, @ModelAttribute UserProfile updatedProfile) {
+        // Récupérer les détails de l'employé à éditer en fonction de son username
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
 
-        // Vérifier si l'utilisateur existe déjà
-        if (!username.equals(user.getLogin()) && userDetailsManager.userExists(user.getLogin())) {
-            validation.addError(new ObjectError("user", "Cet utilisateur existe déjà"));
-            return "redirect:/edit_employe/{username}";
-        }
+        // Mettre à jour les informations de l'employé avec les données soumises dans le formulaire
+        userProfile.setFirstName(updatedProfile.getFirstName());
+        userProfile.setLastName(updatedProfile.getLastName());
+        userProfile.setAddress(updatedProfile.getAddress());
+        userProfile.setPhone(updatedProfile.getPhone());
 
-        // Mettre à jour les informations de l'utilisateur
-        UserDetails userDetails = userDetailsManager.loadUserByUsername(username);
-        User updatedUser = (User) User.withUserDetails(userDetails)
-                .username(user.getLogin())
-                .build();
-        userDetailsManager.updateUser(updatedUser);
-
-        // Mettre à jour les informations du profil utilisateur
-        UserProfile userProfile = userProfilService.findByUsername(username);
-        userProfile.setUsername(user.getLogin());
-        userProfile.setFirstName(user.getFirstName());
-        userProfile.setLastName(user.getLastName());
-        userProfile.setAddress(user.getAddress());
-        userProfile.setPhone(user.getPhone());
-        userProfilService.updateUserProfil(userProfile);
+        // Enregistrer les modifications dans la base de données
+        userProfileRepository.save(userProfile);
 
         return "redirect:/employe_details/{username}";
     }
+
 
 }

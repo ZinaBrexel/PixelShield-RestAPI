@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <title>Pixel Assurance</title>
+</head>
+<body class="bg-dark">
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+<div class="container-fluid">
+    <div class="row">
+        <!-----------Start nav Section-------------->
+        <div th:replace="fragments/nav :: nav"></div>
+        <!-----------End nav Section---------------->
+        <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 d-flex my-5 justify-content-center text-white">
+            <div class="container px-0">
+                <div class="container px-0">
+                    <div class="d-flex justify-content-end">
+                        <form class="d-flex col-md-4" role="search">
+                            <div class="input-group align-items-center">
+                                <input class="form-control me-2 info2 border bg-transparent p-2" type="search" placeholder="Rechercher un sinistre" aria-label="Search">
+                                <div class="input-group-append">
+                  <span class="input-group-text bg-dark border-0" id="search-addon">
+                    <button class="bg-transparent border neon p-1 px-2" type="submit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </button>
+                  </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card border bg-transparent my-5 px-2">
+                    <span class="card-head title text-center mt-4">
+                        Sinistres
+                    </span>
+                    <div class="card-body">
+
+                        <div class="table-responsive pt-4 align-items-">
+                            <table class="table text-white table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">NOM/PRÉNOM</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">TÉLÉPHONE</th>
+                                    <th scope="col">STATUT</th>
+                                    <th scope="col">VOIR</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td> <a class="btn btn-pending nav-link px-3 d-flex align-items-center" href="#">En Cours</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td><a class="btn btn-success nav-link px-3 d-flex align-items-center" href="#">Terminé</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td> <a class="btn btn-pending nav-link px-3 d-flex align-items-center" href="#">En Cours</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td><a class="btn btn-success nav-link px-3 d-flex align-items-center" href="#">Terminé</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td> <a class="btn btn-pending nav-link px-3 d-flex align-items-center" href="#">En Cours</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td> <a class="btn btn-pending nav-link px-3 d-flex align-items-center" href="#">En Cours</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>001</td>
+                                    <td>Marie Petit</td>
+                                    <td>marie.petit@pixelshied.com</td>
+                                    <td>06.25.36.85.47</td>
+                                    <td> <a class="btn btn-pending nav-link px-3 d-flex align-items-center" href="#">En Cours</a></td>
+                                    <td class="d-flex flex-row">
+                                        <a class="btn d-flex align-items-center" href="#" role="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye text-primary" viewBox="0 0 16 16">
+                                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-------------Start Pagination Section---------->
+                <nav th:replace="fragments/pagination :: nav"></nav>
+                <!-------------End Pagination Section------------>
+            </div>
+        </main>
+    </div>
+</div>
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

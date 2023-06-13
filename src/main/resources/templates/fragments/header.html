@@ -1,0 +1,41 @@
+<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 ">
+  <div class="navbar-brand col-md-3 col-lg-3 me-0 px-3 d-flex flex-row text-white align-items-center border-end">
+    <img src="/Logo_no_background.png" alt="Logo" class="navbar-logo">
+    <span class="logo d-flex flex-column ms-2">
+      <span>PIXEL</span>
+      <span>SHIELD</span>
+    </span>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item d-flex flex-row ms-5 ">
+      <a class="nav-link px-3 d-none d-md-block title1" th:href="@{/}">Home</a>
+      <a class="nav-link px-3 d-none d-md-block title1" th:href="@{/nostarifs}">Nos tarifs</a>
+      <a class="nav-link px-3 d-none d-md-block title1" th:href="@{/nosvaleurs}">Nos valeurs</a>
+    </div>
+  </div>
+  <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+    <a class="nav-link px-3 ms-auto d-none d-md-block" href="#">URGENCE ?</a>
+    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="bi bi-list"></i></span>
+    </button>
+    <div class="nav-item text-nowrap d-none d-md-block ">
+      <span sec:authorize="isAuthenticated()">
+      <div class="dropdown position-static">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="header-thumbnail px-3 mt-2 me-4 d-flex justify-content-center align-items-center">
+            <img src="/Robot1_portrait_noBG.png" alt="Thumbnail">
+          </div>
+        </button>
+  <ul class="dropdown-menu bg-transparent dropdown-menu-end position-absolute" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item text-white" th:href="@{/profil}">Profil</a></li>
+          <hr class="dropdown-divider">
+          <li><a class="dropdown-item text-white" th:href="@{/logout}">Se déconnecter</a></li>
+        </ul>
+      </div >
+         </span>
+      <span sec:authorize="!isAuthenticated()">
+      <a class="btn btn-neon nav-link px-3 me-4 d-flex align-items-center" th:href="@{/login}" role="button">Log In</a>
+         </span>
+    </div>
+  </div>
+</header>

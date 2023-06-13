@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Pixel Assurance</title>
+</head>
+<body class="bg-dark">
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+<div class="container-fluid">
+  <div class="row">
+    <!-----------Start nav Section-------------->
+    <div th:replace="fragments/nav :: nav"></div>
+    <!-----------End nav Section---------------->
+    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 d-flex my-5  justify-content-center">
+      <!-------------Start customerProfile Section---------->
+      <div th:replace="fragments/customerProfile :: div"  sec:authorize="hasRole('ROLE_USER')"></div>
+      <!-------------End customerProfile Section------------>
+
+      <!-------------Start customerProfile Section---------->
+      <div th:replace="fragments/adminProfil :: div" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')"></div>
+
+      <!-------------End customerProfile Section------------>
+
+    </main>
+  </div>
+</div>
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

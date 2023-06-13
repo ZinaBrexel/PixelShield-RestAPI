@@ -1,0 +1,17 @@
+<nav aria-label="pagination">
+  <ul class="pagination justify-content-end">
+    <li class="page-item custom-pagination" th:classappend="${surveys.hasPrevious() ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{/sondages(page=${surveys.number - 1})}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item custom-pagination" th:each="pageNumber : ${#numbers.sequence(0, surveys.totalPages - 1)}" th:classappend="${pageNumber == surveys.number ? 'active' : ''}">
+      <a class="page-link" th:href="@{/sondages(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+    </li>
+    <li class="page-item custom-pagination" th:classappend="${surveys.hasNext() ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{/sondages(page=${surveys.number + 1})}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

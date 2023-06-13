@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org " xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <title>Pixel Assurance</title>
+</head>
+<body class="bg-dark">
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+<div class="container-fluid">
+  <div class="row">
+    <!-----------Start nav Section-------------->
+    <div th:replace="fragments/nav :: nav"></div>
+    <!-----------End nav Section---------------->
+    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+      <div id="carouselExampleControls" class="carousel slide mt-5 border mx-2" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/1.png" class="d-block w-100 rounded" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/2.png" class="d-block w-100 rounded" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/3.png" class="d-block w-100 rounded" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 me-md-2">
+            <div class="card-body">
+              <img  src="/Top-arrow-noBg.png" class="card-img" alt="...">
+              <span class="title1">STARTER PACK</span>
+              <p class="card-text mt-2 mt-md-5">Assurance de base pour les gamers qui couvre l'essentiel de votre matériel.</p>
+            </div>
+          </div>
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 mx-md-2">
+            <div class="card-body">
+              <img src="/Logo_shield_noBg.png" class="card-img" alt="...">
+              <span class="title1">ARMOR PACK</span>
+              <p class="card-text mt-2 mt-md-5">Assurance supérieure qui offre non seulement une couverture matérielle, mais aussi un support pour la récupération de comptes de jeu.</p>
+            </div>
+          </div>
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 ms-md-2">
+            <div class="card-body">
+              <img src="/Logo_Angel_noBG.png" class="card-img" alt="...">
+              <span class="title1">RESPAWN PACK</span>
+              <p class="card-text mt-2 mt-md-5">Le niveau de protection le plus élevé, offrant une couverture complète et un remboursement des frais liés aux compétitions
+                e-sport en cas d'annulation.</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center my-3 my-md-0">
+            <a class="btn btn-neon-big nav-link d-flex align-items-center justify-content-center col-md-6" href="#" role="button">ÉQUIPE TOI DÈS À PRÉSENT !</a>
+          </div>
+          <div class="border bg-transparent d-flex align-items-center justify-content-center my-3 mt-md-5">
+            <img src="/Robot1_portrait_noBG.png" class="robot"  alt="...">
+            <p class="text-white pt-3 pt-md-0">“ Notre mission est de protéger les passions des gamers. Que ce soit leur matériel, leurs comptes de jeux ou leur carrière dans l'eSport, nous nous engageons à fournir une couverture de qualité, adaptée à chaque besoin. “</p>
+          </div>
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 me-md-2">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-center">
+                <img src="/Top-arrow-noBg.png" class="card-img-small" alt="...">
+                <span class="title1">STARTER PACK</span>
+              </div>
+              <div class="card-text my-3 mt-md-5 flex-grow-1">
+                <div class="mb-3 text-start"><span>Couverture des dommages au matériel (écran, tour, souris, carte graphique, fauteuil, etc.)</span></div>
+                <div class="text-start"><span>Remboursement complet du matériel sans tenir compte de l'argus.</span></div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-neon nav-link d-flex align-items-center justify-content-center col-6" href="#" role="button">15€/mois</a>
+              </div>
+            </div>
+          </div>
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 mx-md-2">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-center">
+                <img src="/Logo_shield_noBg.png" class="card-img-small" alt="...">
+                <span class="title1">ARMOR PACK</span>
+              </div>
+              <div class="card-text mt-2 mt-md-5 flex-grow-1">
+                <div class="mb-3 text-start"><span>Assurance supérieure qui offre non seulement une couverture matérielle, mais aussi un support pour la récupération de comptes de jeu.</span></div>
+                <div class="mb-3 text-start"><span>Tous les avantages de LVL UP Assistance à la récupération de comptes de jeu (steam, fortnite, valorant, etc.).</span></div>
+                <div class="mb-3 text-start"><span>Négociation de compensation en cas d'absolue impossibilité de récupération.</span></div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-neon nav-link d-flex align-items-center justify-content-center col-6" href="#" role="button">30€/mois</a>
+              </div>
+            </div>
+          </div>
+          <div class="card card-size1 col-lg-3 border bg-transparent text-center my-3 my-md-5 ms-md-2">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-center">
+                <img src="/Logo_Angel_noBG.png" class="card-img-small" alt="...">
+                <span class="title1">RESPAWN PACK</span>
+              </div>
+              <div class="card-text mt-2 mt-md-5 flex-grow-1">
+                <div class="mb-3 text-start"><span>Tous les avantages de l'ARMOR PACK.</span></div>
+                <div class="mb-3 text-start"><span>Tous les avantages de LVL UP Assistance à la récupération de comptes de jeu (steam, fortnite, valorant, etc.).</span></div>
+                <div class="text-start"><span>Remboursement des frais divers liés aux compétitions de e-sport en cas d'annulation de la compétition, grève de transport, etc.</span></div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-neon nav-link d-flex align-items-center justify-content-center col-6 my-2 my-md-0" href="#" role="button">50€/mois</a>
+              </div>
+            </div>
+          </div>
+          <div class="border bg-transparent d-flex align-items-center justify-content-center mt-3 mt-md-0 mb-5">
+            <img src="/Robot2_portrait_noBG.png" class="robot"  alt="...">
+            <p class="text-white pt-3 pt-md-0">“ PixelShield aspire à être le bouclier de confiance pour tous les gamers et professionnels de l'e-Sport. Notre objectif est d'assurer la tranquillité d'esprit en offrant une protection optimale et un soutien fiable pour tous les aspects du jeu. “</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

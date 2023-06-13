@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Pixel Assurance</title>
+</head>
+<body class="bg-dark">
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+<div class="container-fluid">
+  <div class="row">
+    <!-----------Start nav Section-------------->
+    <div th:replace="fragments/nav :: nav"></div>
+    <!-----------End nav Section---------------->
+    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 d-flex my-5 text-white">
+      <div class="container">
+       <div class="row">
+         <h3 class="my-md-4 mb-4 d-flex justify-content-center">A Propos</h3>
+         <div class="card border bg-transparent p-5">
+           <h3 class="my-md-4">Qui sommes-nous?</h3>
+           <div class="mb-4">
+             <p>Bienvenue chez PixelShield Assurance, votre bouclier de confiance dans l'univers du gaming. Née de la passion du jeu et de la volonté de fournir une protection optimale à chaque gamer, PixelShield est bien plus qu'une simple entreprise d'assurance.</p>
+             </br>
+             <p>Nous avons compris que dans le monde du gaming, chaque pixel compte. Que vous soyez un joueur occasionnel ou un professionnel de l'eSport, nous comprenons que votre passion mérite la meilleure protection.</p>
+           </div>
+
+           <h3 class="my-4">Notre Mission</h3>
+           <div class="mb-4">
+             <p>Notre mission est de protéger les passions des gamers. Que ce soit leur matériel, leurs comptes de jeux ou leur carrière dans l'eSport, nous nous engageons à fournir une couverture de qualité, adaptée à chaque besoin.</p>
+             <ul>
+               <span>Chez PixelShield, nous proposons trois niveaux de protection :</span>
+               <li>STARTER PACK : notre assurance de base qui couvre votre matériel geek essentiel.</li>
+               <li>ARMOR PACK : une couverture plus étendue qui offre une aide précieuse pour la récupération de vos comptes de jeux.</li>
+               <li>RESPAWN PACK : notre package premium qui couvre tous les aspects du gaming, y compris le remboursement des frais liés aux compétitions eSport en cas d'annulation.</li>
+             </ul>
+           </div>
+           <h3 class="my-4">Nos Valeurs</h3>
+           <div class="mb-4">
+             <p>Chez PixelShield, nous nous engageons à l'Engagement, la Fiabilité, la Passion et l'Innovation.</br>
+               Nous nous engageons à soutenir chaque gamer dans toutes les situations, qu'il s'agisse de protéger leur matériel, d'aider à récupérer leurs comptes de jeux ou de les aider à surmonter des défis imprévus.</br>
+               Nous mettons l'accent sur la fiabilité de nos services. Nous visons à être un partenaire sur lequel nos clients peuvent compter en toute circonstance.</br>
+               Nous partageons la passion du gaming avec nos clients. Nous comprenons l'importance de chaque pixel, de chaque niveau et de chaque victoire.</br>
+               Et enfin, nous nous efforçons d'innover et de nous adapter constamment à l'évolution rapide de l'industrie du gaming pour offrir des solutions d'assurance à jour et pertinentes.</p>
+           </div>
+           <h3 class="my-4">Rejoignez-nous</h3>
+           <div class="mb-md-4">
+             <p>Embarquez avec nous dans cette aventure et laissez-nous prendre soin de votre univers gaming. PixelShield, pour une vie gaming sans souci.</p>
+           </div>
+         </div>
+       </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

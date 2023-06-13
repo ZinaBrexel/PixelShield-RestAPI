@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Pixel Assurance</title>
+</head>
+<body class="bg-dark">
+<!-----------Start Header Section-------------->
+<div th:replace="fragments/header :: header"></div>
+<!-----------End Header Section---------------->
+<div class="container-fluid">
+  <div class="row">
+    <!-----------Start nav Section-------------->
+    <div th:replace="fragments/nav :: nav"></div>
+    <!-----------End nav Section---------------->
+    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 d-flex my-5 text-white">
+      <div class="container">
+        <div class="row">
+          <h3 class="my-4 d-flex justify-content-center">Mentions Légales</h3>
+          <div class="card border bg-transparent p-5">
+            <h3 class="my-4">1. Informations légales</h3>
+            <p class="mb-4">La société PixelShield, dont le siège social est situé au 123 Rue de la Technologie, 75001 Paris, est la société éditrice de ce site web. PixelShield est une société anonyme au capital de 1.000.000 euros, immatriculée au RCS de Paris sous le numéro 123456789.</p>
+            <p class="mb-4">Le directeur de la publication est Monsieur Jean Dupont, président du conseil d'administration de PixelShield.</p>
+            <h3 class="my-4">2. Autorité de supervision</h3>
+            <p class="mb-4">PixelShield est un agent d'assurance réglementé par l'Autorité de contrôle prudentiel et de résolution (ACPR), 4 Place de Budapest, CS 92459, 75436 PARIS CEDEX 09.</p>
+            <h3 class="my-4">3. Informations sur l'assurance</h3>
+            <p class="mb-4">PixelShield possède une licence pour opérer en tant qu'agent d'assurance sous le numéro de licence 1234567. Pour plus d'informations sur notre licence, veuillez nous contacter à l'adresse suivante : contact@pixelshield.com.</p>
+            <h3 class="my-4">4. Droit de rétractation</h3>
+            <p class="mb-4">Conformément à la loi, vous disposez d'un délai de rétractation de 14 jours à compter de la date de souscription de votre contrat d'assurance. Pour exercer ce droit, vous pouvez nous contacter à l'adresse suivante : retractation@pixelshield.com.</p>
+            <h3 class="my-4">5. Réclamations et plaintes</h3>
+            <p class="mb-4">Si vous avez une réclamation ou une plainte concernant un de nos produits ou services, veuillez nous contacter à l'adresse suivante : reclamations@pixelshield.com. Nous nous engageons à traiter votre réclamation de manière équitable et rapide.</p>
+            <h3 class="my-4">6. Hébergeur du site</h3>
+            <p class="mb-4">L'hébergeur du site www.pixelshield.com est la société Amazon Web Services (AWS), dont le siège social est situé au 410 Terry Avenue North, Seattle, WA 98109-5210, USA.</p>
+            <h3 class="my-4">7. Propriété intellectuelle</h3>
+            <p class="mb-4">Tous les contenus présents sur le site www.pixelshield.com sont couverts par le droit d'auteur. Toute reprise est dès lors conditionnée à l'accord de l'auteur en vertu de l'article L.122-4 du Code de la Propriété Intellectuelle.</p>
+            <h3 class="my-4">8. Protection des données personnelles</h3>
+            <p class="mb-4">Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au Règlement Européen 2016/679 du 27 avril 2016, les informations vous concernant sont destinées à PixelShield, responsable du traitement.</p>
+            <h3 class="my-4">9. Cookies</h3>
+            <p class="mb-4">Pour des besoins de statistiques et d'affichage, ce site utilise des cookies.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-------------Start Footer Section---------->
+<div th:replace="fragments/footer :: footer"></div>
+<!-------------End Footer Section------------>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
