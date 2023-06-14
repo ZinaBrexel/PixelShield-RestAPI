@@ -22,14 +22,6 @@ public class ApiController {
         return ("/login");
     }
 
-    @GetMapping("/materiel")
-    public String equipment() {
-        return ("equipment");
-    }
-    @GetMapping("/mes_sinistres")
-    public String accident() {
-        return ("accident");
-    }
     @GetMapping("/sinistres")
     public String accidents() {
         return ("accidents");

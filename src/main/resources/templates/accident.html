@@ -32,17 +32,17 @@
         <span class="card-head title text-center mt-4">
                Mes sinistres
               </span>
-        <div class="card-body">
-          <form>
+        <div class="card-body" >
+          <form  method="post" th:action="@{/mes_sinistres}">
             <div class="d-md-flex flex-row mb-2  my-md-4">
               <div class="flex-grow-1 px-2">
                 <div class="d-md-flex flex-row">
-                  <label for="equipment" class="form-label">Type de sinistre</label>
-                  <input type="text" id="equipment" name="equipment" class="form-control input-equip border" placeholder="Type d'équipement" required>
+                  <label for="type" class="form-label">Type de sinistre</label>
+                  <input type="text" id="type" name="type" class="form-control input-equip border" placeholder="Type d'équipement" required>
                 </div>
               </div>
               <div class="flex-grow-1 mt-3 mt-md-0 px-2 px-md-3">
-                <div class=" d-md-flex flex-row">
+                <div class="d-md-flex flex-row">
                   <label for="file" class="form-label pe-3">Document</label>
                   <input type="file" class="form-control input-equip border" id="file" name="file" required>
                 </div>
@@ -56,7 +56,7 @@
                 </div>
               </div>
               <div class="add-thumbnail d-flex mt-5 mt-md-0 justify-content-center align-items-center">
-                <a class="btn rounded title1" type="submit"><span>+</span></a>
+                <button class="btn rounded title1" type="submit"><span>+</span></button>
               </div>
             </div>
           </form>
@@ -72,102 +72,19 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
+              <tr th:each="accident : ${accidents}">
+                <td th:text="${accident.id}">001</td>
+                <td th:text="${accident.creationDate}">21/04/2023</td>
+                <td th:text="${accident.type}">Vol</td>
+                <td th:text="${accident.file}">Déclaration-vol.pdf</td>
                 <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
+                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center"
+                     th:if="${accident.pending}">
                     En Cours
                   </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>002</td>
-                <td>18/02/2023</td>
-                <td>Annulation E-Sport</td>
-                <td>Greve.pdf</td>
-                <td>
-                  <a class="btn btn-success-big nav-link px-3 me-4 d-flex align-items-center">
-                    Traité
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-warning-big nav-link px-3 me-4 d-flex align-items-center">
-                    Rejeté
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>001</td>
-                <td>21/04/2023</td>
-                <td>Vol</td>
-                <td>Déclaration-vol.pdf</td>
-                <td>
-                  <a class="btn btn-pending-big nav-link px-3 me-4 d-flex align-items-center">
-                    En Cours
+                  <a class="btn btn-success-big nav-link px-3 me-4 d-flex align-items-center"
+                     th:unless="${accident.pending}">
+                    Terminé
                   </a>
                 </td>
               </tr>
