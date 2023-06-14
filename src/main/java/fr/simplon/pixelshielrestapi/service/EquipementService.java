@@ -18,4 +18,7 @@ public class EquipementService {
     public Collection<Equipement> getAccidentsByUser(String username) {
         return equipementRepository.findByUsername(username);
     }
+    public void deleteEquipementById(Long id) {
+        equipementRepository.deleteById(id);
+    }
 }

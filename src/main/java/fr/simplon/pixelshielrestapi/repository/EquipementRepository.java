@@ -8,5 +8,8 @@ import java.util.Collection;
 
 @Repository
 public interface EquipementRepository extends JpaRepository<Equipement, Long> {
+
+
     Collection<Equipement> findByUsername(String username);
+
 }
