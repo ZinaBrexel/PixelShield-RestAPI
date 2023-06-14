@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,7 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
+
 
 @Controller
 public class UsersController
@@ -57,7 +56,16 @@ public class UsersController
         {
             model.addAttribute("user", new UserForm());
         }
+        Collection<UserProfile> managerProfiles = userProfileRepository.findAllByRoleManager();
+        model.addAttribute("managerProfiles", managerProfiles);
         return "employees";
+    }
+    @GetMapping(path = "/clients")
+    public String getAllCustomers(Model model)
+    {
+        Collection<UserProfile> userProfiles = userProfileRepository.findAllByRoleUser();
+        model.addAttribute("userProfiles", userProfiles);
+        return "customers";
     }
     @PostMapping("/createManager")
     @Transactional
@@ -115,6 +123,14 @@ public class UsersController
         model.addAttribute("userProfile", userProfile);
         return "profile";
     }
+    @GetMapping("/edit/profil/{username}")
+    public String getProfilEdit(@PathVariable String username, Model model) {
+
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+        model.addAttribute("userProfile", userProfile);
+
+        return "profileEdit";
+    }
 
     @PostMapping("/createUser")
     @Transactional
@@ -160,6 +176,23 @@ public class UsersController
         userProfilService.addUserProfil(userProfile);
 
         return "redirect:/";
+    }
+    @PostMapping("/edit/profil/{username}")
+    public String updateProfile(@PathVariable String username,
+                                @ModelAttribute UserProfile updatedProfile) {
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+
+        // Mettre à jour les informations du client avec les données soumises dans le formulaire
+        userProfile.setFirstName(updatedProfile.getFirstName());
+        userProfile.setLastName(updatedProfile.getLastName());
+        userProfile.setAddress(updatedProfile.getAddress());
+        userProfile.setPhone(updatedProfile.getPhone());
+
+        // Enregistrer les modifications dans la base de données
+        userProfileRepository.save(userProfile);
+
+
+        return "redirect:/profil";
     }
 
 }

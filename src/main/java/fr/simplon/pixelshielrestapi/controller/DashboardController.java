@@ -147,9 +147,6 @@ public class DashboardController {
         return "redirect:/employe/details/{username}";
     }
 
-
-
-
     @PostMapping("/edit/client/{username}")
     public String editCustomer(@PathVariable String username,
                                @ModelAttribute UserProfile updatedProfile) {

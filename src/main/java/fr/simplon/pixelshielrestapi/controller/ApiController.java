@@ -22,11 +22,6 @@ public class ApiController {
         return ("/login");
     }
 
-
-    @GetMapping("/profil_edit")
-    public String profileEdit() {
-        return ("profileEdit");
-    }
     @GetMapping("/materiel")
     public String equipment() {
         return ("equipment");
@@ -42,10 +37,6 @@ public class ApiController {
     @GetMapping("/sinistre")
     public String accidentProfile() {
         return ("accidentProfile");
-    }
-    @GetMapping("/clients")
-    public String customersAdmin() {
-        return ("customers");
     }
     @GetMapping("/annuaire")
     public String phoneBook() {
