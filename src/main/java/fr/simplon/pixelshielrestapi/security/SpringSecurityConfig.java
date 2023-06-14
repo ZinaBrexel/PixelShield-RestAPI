@@ -38,14 +38,15 @@ public class SpringSecurityConfig {
         return http
                 .csrf().disable() // Pour l'instant on désactive la protection CSRF
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET,"/profil", "/password").authenticated()
+                .requestMatchers(HttpMethod.GET,"/profil", "/password/**").authenticated()
                 .requestMatchers("/dashboard", "/clients", "/client_details", "/client_edit", "/profil_client").hasAnyRole("ADMIN", "MANAGER")
-                .requestMatchers(HttpMethod.GET,   "/employees", "/dashboard", "/dashboard/moderation/**", "/employe_details/**", "/edit/employe/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,   "/employees", "/dashboard", "/dashboard/moderation/**", "/employe/details/**", "/edit/employe/**","/client/details/**", "/edit/client/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET,   "/sondages" , "/sinistres", "/sinistre", "/sondages/vote/**" ).hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/materiel", "/mes_sinistres" ).hasRole("USER")
-                .requestMatchers(HttpMethod.POST, "/createManager", "/dashboard/moderation/**", "/edit/employe/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/password/**").hasAnyRole("ADMIN", "MANAGER", "USER")
+                .requestMatchers(HttpMethod.POST, "/createManager", "/dashboard/moderation/**", "/edit/employe/**", "/edit/client/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/createSurvey", "/sondages/vote/**").hasRole("MANAGER")
-                .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/password", "/createUser").permitAll()
+                .requestMatchers(HttpMethod.POST, "/login", "/souscription", "/contact", "/createUser").permitAll()
                 .requestMatchers(HttpMethod.GET,"/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login") // Ici on spécifie la page de login

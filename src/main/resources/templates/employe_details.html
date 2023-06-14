@@ -56,11 +56,11 @@
               <div class="d-md-flex flex-row my-4 justify-content-between">
                 <div class="d-md-flex flex-row col-md-5 align-items-center">
                   <label for="lastName" class="form-label me-3" >Nom</label>
-                  <input type="text" class="form-control input-emp border" id="lastName" name="lastName" th:field="${userProfile.lastName}"readonly>
+                  <input type="text" class="form-control input-emp border" id="lastName" name="lastName" th:field="${userProfile.lastName}" readonly>
                 </div>
                 <div class="d-md-flex flex-row col-md-5 mt-4 mt-md-0 align-items-center">
                   <label for="firstName" class="form-label me-3">Prénom</label>
-                  <input type="text" class="form-control input-emp border" id="firstName" name="firstName"  th:field="${userProfile.firstName}"readonly>
+                  <input type="text" class="form-control input-emp border" id="firstName" name="firstName"  th:field="${userProfile.firstName}" readonly>
                 </div>
               </div>
               <div class="d-md-flex flex flex-row my-4 justify-content-between">
@@ -76,10 +76,6 @@
               <div class="d-md-flex flex-row align-items-center my-4">
                 <label for="username" class="form-label me-3">Email</label>
                 <input type="email" class="form-control input-emp border" id="username" name="username" th:field="${userProfile.username}"  readonly>
-              </div>
-              <div class="form-check form-switch my-4">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Désactiver</label>
               </div>
             </div>
             <div class="card-footer">

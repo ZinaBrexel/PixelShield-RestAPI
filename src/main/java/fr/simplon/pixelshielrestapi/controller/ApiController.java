@@ -23,10 +23,7 @@ public class ApiController {
         return ("/login");
     }
 
-    @GetMapping("/password")
-    public String password() {
-        return ("updatePassword");
-    }
+
     @GetMapping("/profil_edit")
     public String profileEdit() {
         return ("profileEdit");
@@ -50,14 +47,6 @@ public class ApiController {
     @GetMapping("/clients")
     public String customersAdmin() {
         return ("customers");
-    }
-    @GetMapping("/client_details")
-    public String customerDetailsAdmin() {
-        return ("customer_details");
-    }
-    @GetMapping("/client_edit")
-    public String clientEditAdmin() {
-        return ("customerEdit");
     }
     @GetMapping("/annuaire")
     public String phoneBook() {

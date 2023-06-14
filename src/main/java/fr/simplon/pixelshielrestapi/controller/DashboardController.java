@@ -1,23 +1,17 @@
 package fr.simplon.pixelshielrestapi.controller;
 
-import fr.simplon.pixelshielrestapi.dto.UserForm;
 import fr.simplon.pixelshielrestapi.entity.Survey;
 import fr.simplon.pixelshielrestapi.entity.UserProfile;
 import fr.simplon.pixelshielrestapi.repository.SurveyRepository;
 import fr.simplon.pixelshielrestapi.repository.UserProfileRepository;
 import fr.simplon.pixelshielrestapi.service.SurveyService;
-import fr.simplon.pixelshielrestapi.service.UserProfilService;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -29,8 +23,6 @@ public class DashboardController {
 
     @Autowired
     private UserDetailsManager userDetailsManager;
-    @Autowired
-    private UserProfilService userProfilService;
 
     @Autowired
     private UserProfileRepository userProfileRepository;
@@ -85,7 +77,7 @@ public class DashboardController {
 
         return "redirect:/dashboard";
     }
-    @GetMapping("/employe_details/{username}")
+    @GetMapping("/employe/details/{username}")
     public String getEmployeDetails(@PathVariable String username, Model model) {
 
         UserProfile userProfile = userProfileRepository.findByUsername(username);
@@ -101,9 +93,27 @@ public class DashboardController {
 
         return "edit_employe";
     }
+    @GetMapping("/client/details/{username}")
+    public String getCustomerDetails(@PathVariable String username, Model model) {
+
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+        model.addAttribute("userProfile", userProfile);
+
+        return "customer_details";
+    }
+    @GetMapping("/edit/client/{username}")
+    public String getCustomerEdit(@PathVariable String username, Model model) {
+
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+        model.addAttribute("userProfile", userProfile);
+
+        return "customerEdit";
+    }
 
     @PostMapping("/edit/employe/{username}")
-    public String editEmploye(@PathVariable String username, @ModelAttribute UserProfile updatedProfile) {
+    public String editEmploye(@PathVariable String username,
+                              @ModelAttribute UserProfile updatedProfile,
+                              @RequestParam(value = "enabled", required = false) Boolean enabled) {
         // Récupérer les détails de l'employé à éditer en fonction de son username
         UserProfile userProfile = userProfileRepository.findByUsername(username);
 
@@ -116,8 +126,40 @@ public class DashboardController {
         // Enregistrer les modifications dans la base de données
         userProfileRepository.save(userProfile);
 
-        return "redirect:/employe_details/{username}";
-    }
+        // Mettre à jour l'état d'activation du compte utilisateur avec UserDetailsManager
+        UserDetails userDetails = userDetailsManager.loadUserByUsername(username);
+        if (userDetails != null) {
+            User.UserBuilder builder = org.springframework.security.core.userdetails.User.withUserDetails(userDetails);
+            User.UserBuilder updatedUserBuilder = builder.username(username);
+            if (enabled != null && !enabled) {
+                updatedUserBuilder.disabled(true);
+            } else {
+                updatedUserBuilder.disabled(false);
+            }
+            User updatedUser = (User) updatedUserBuilder.build();
+            userDetailsManager.updateUser(updatedUser);
+        } else {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
 
+        return "redirect:/employe/details/{username}";
+    }
+    @PostMapping("/edit/client/{username}")
+    public String editCustomer(@PathVariable String username,
+                              @ModelAttribute UserProfile updatedProfile) {
+        // Récupérer les détails du client à éditer en fonction de son username
+        UserProfile userProfile = userProfileRepository.findByUsername(username);
+
+        // Mettre à jour les informations du client avec les données soumises dans le formulaire
+        userProfile.setFirstName(updatedProfile.getFirstName());
+        userProfile.setLastName(updatedProfile.getLastName());
+        userProfile.setAddress(updatedProfile.getAddress());
+        userProfile.setPhone(updatedProfile.getPhone());
+
+        // Enregistrer les modifications dans la base de données
+        userProfileRepository.save(userProfile);
+
+        return "redirect:/client/details/{username}";
+    }
 
 }

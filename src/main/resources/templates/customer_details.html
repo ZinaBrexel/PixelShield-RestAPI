@@ -50,10 +50,10 @@
         <div class="container p-0 d-md-flex flex-row justify-content-around">
 
           <!-------------Start ProfilCustomerEmploye Section---------->
-          <div th:replace="fragments/profilCustomerEmploye :: div"></div>
+          <div th:replace="fragments/profilCustomerEmploye :: div" sec:authorize="hasRole('ROLE_MANAGER')"></div>
           <!-------------End ProfilCustomerEmploye Section------------>
           <!-------------Start ProfilCustomerAdmin Section---------->
-          <div th:replace="fragments/profilCustomerAdmin :: form"></div>
+          <div th:replace="fragments/profilCustomerAdmin :: form" sec:authorize="hasRole('ROLE_ADMIN')"></div>
           <!-------------End ProfilCustomerAdmin Section------------>
         </div>
       </div>
