@@ -92,4 +92,5 @@ public class Survey {
         return LocalDateTime.now().isAfter(this.close_date);
     }
 
+
 }

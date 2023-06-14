@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface VoteRepository extends JpaRepository<Vote, Long> {
 
     boolean existsByUsernameAndSurveyId(String username, Long surveyId);
+
 }
