@@ -19,6 +19,11 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
             "(SELECT a.username FROM authorities a WHERE a.authority = 'ROLE_MANAGER') " +
             "ORDER BY u.created_at DESC LIMIT 10", nativeQuery = true)
     Collection<UserProfile> findTop10ByRoleManager();
+
+    @Query(value = "SELECT * FROM user_profiles u WHERE u.username IN " +
+            "(SELECT a.username FROM authorities a WHERE a.authority = 'ROLE_MANAGER') " ,
+             nativeQuery = true)
+    Collection<UserProfile> findAllByRoleManager();
     UserProfile findByUsername(String username);
 
 }

@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 
 public class SpringSecurityConfig {
-@Autowired
+    @Autowired
     private javax.sql.DataSource dataSource;
 
     @Bean

@@ -89,7 +89,9 @@ public class DashboardController {
     public String getEmployeEdit(@PathVariable String username, Model model) {
 
         UserProfile userProfile = userProfileRepository.findByUsername(username);
+        boolean isEnabled = userDetailsManager.loadUserByUsername(username).isEnabled();
         model.addAttribute("userProfile", userProfile);
+        model.addAttribute("isEnabled", isEnabled);
 
         return "edit_employe";
     }
@@ -129,12 +131,12 @@ public class DashboardController {
         // Mettre à jour l'état d'activation du compte utilisateur avec UserDetailsManager
         UserDetails userDetails = userDetailsManager.loadUserByUsername(username);
         if (userDetails != null) {
-            User.UserBuilder builder = org.springframework.security.core.userdetails.User.withUserDetails(userDetails);
+            User.UserBuilder builder = User.withUserDetails(userDetails);
             User.UserBuilder updatedUserBuilder = builder.username(username);
-            if (enabled != null && !enabled) {
-                updatedUserBuilder.disabled(true);
+            if (enabled == null || !enabled) {
+                updatedUserBuilder.disabled(true); // Activer le compte si le bouton n'est pas coché
             } else {
-                updatedUserBuilder.disabled(false);
+                updatedUserBuilder.disabled(false); // Désactiver le compte si le bouton est coché
             }
             User updatedUser = (User) updatedUserBuilder.build();
             userDetailsManager.updateUser(updatedUser);
@@ -144,9 +146,13 @@ public class DashboardController {
 
         return "redirect:/employe/details/{username}";
     }
+
+
+
+
     @PostMapping("/edit/client/{username}")
     public String editCustomer(@PathVariable String username,
-                              @ModelAttribute UserProfile updatedProfile) {
+                               @ModelAttribute UserProfile updatedProfile) {
         // Récupérer les détails du client à éditer en fonction de son username
         UserProfile userProfile = userProfileRepository.findByUsername(username);
 

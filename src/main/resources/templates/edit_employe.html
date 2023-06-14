@@ -74,8 +74,8 @@
                 </div>
               </div>
               <div class="form-check form-switch my-4">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="enabled" th:checked="${!userProfile.enabled}" th:value="true">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Désactiver</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="enabled" th:checked="${isEnabled}" value="true">
+                <label class="form-check-label" for="flexSwitchCheckDefault"><span th:text="${isEnabled ? 'Compte activé' : 'Compte désactivé'}"></span></label>
               </div>
 
             </div>
